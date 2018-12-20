@@ -1,2 +1,2 @@
 # iocage-plugin-lidarr
-Lidarr plugin for iocage
+Artifact file(s) for iocage lidarr plugin.
