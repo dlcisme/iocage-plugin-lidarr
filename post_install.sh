@@ -1,3 +1,4 @@
+#!/bin/sh
 
 # set the version to install
 # go to --> https://github.com/lidarr/Lidarr/releases
