@@ -1,38 +1,39 @@
 
-# set the version 
+# set the version to install
+# go to --> https://github.com/lidarr/Lidarr/releases
+# to find the latest release, Lidar.develop.x.x.x.xxx.linux.tar.gz
 VERSION="0.5.0.583"
-# set the destination to install "lidarr"
-DESTINATION="/usr/local/share"
+# set the install location for lidarr 
+INSTALL_LOCATION="/usr/local/share"
+# set the data location
+DATA_LOCATION="/app-data/lidarr"
 
 # make sure "mono" points to the proper location
 ln -s /usr/local/bin/mono /usr/bin/mono
 
 # get the "lidarr" package
-fetch https://github.com/lidarr/Lidarr/releases/download/v$VERSION/Lidarr.develop.$VERSION.linux.tar.gz -o $DESTINATION
+fetch https://github.com/lidarr/Lidarr/releases/download/v$VERSION/Lidarr.develop.$VERSION.linux.tar.gz -o $INSTALL_LOCATION
 
-# unpack the package to the destination directory
-tar -xzvf /usr/local/share/Lidarr.develop.*.linux.tar.gz -C $DESTINATION
+# unpack the package to the install location
+tar -xzvf /usr/local/share/Lidarr.develop.*.linux.tar.gz -C $INSTALL_LOCATION
 
-# remove the package as no longer needed
-rm $DESTINATION/Lidarr.*.tar.gz
+# remove the package as it no longer needed
+rm $INSTALL_LOCATION/Lidarr.*.tar.gz
 
 # create "lidarr" user
 pw user add lidarr -c lidarr -u 353 -d /nonexistent -s /usr/bin/nologin
 
+# create the data location
+mkdir $DATA_LOCATION
 
-mkdir /usr/local/lidarr
+# make "lidarr" the owner of the install and data locations
+chown -R lidarr:lidarr $INSTALL_LOCATIOON $DATA_LOCATION
 
-chown -R lidarr:lidarr /usr/local/share/Lidarr /usr/local/lidarr
+# give execute permssion to the Daemon script
+chmod u+x /etc/rc.d/lidarr
 
-
-
-chmod u+x /usr/local/etc/rc.d/lidarr
-
+# enable lidarr to start at boot
 sysrc "lidarr_enable=YES"
 
+# start the lidarr service
 service lidarr start
-
-
-sysrc -f /etc/rc.conf  lidarr_enable="YES"
-
-service start lidarr
