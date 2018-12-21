@@ -17,7 +17,7 @@ ln -s /usr/local/bin/mono /usr/bin/mono
 fetch https://github.com/lidarr/Lidarr/releases/download/v$VERSION/Lidarr.develop.$VERSION.linux.tar.gz -o $INSTALL_LOCATION
 
 # unpack the package to the install location
-tar -xzvf /usr/local/share/Lidarr.develop.*.linux.tar.gz -C $INSTALL_LOCATION
+tar -xzvf $INSTALL_LOCATION/Lidarr.develop.*.linux.tar.gz -C $INSTALL_LOCATION
 
 # remove the package as it no longer needed
 rm $INSTALL_LOCATION/Lidarr.*.tar.gz
@@ -30,6 +30,9 @@ mkdir $DATA_LOCATION
 
 # make "lidarr" the owner of the install and data locations
 chown -R lidarr:lidarr $INSTALL_LOCATIOON $DATA_LOCATION
+
+# give write permission for plugin update
+chmod 755 $DATA_LOCATION
 
 # give execute permssion to the Daemon script
 chmod u+x /etc/rc.d/lidarr
