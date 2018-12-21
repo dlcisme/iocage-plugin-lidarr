@@ -4,7 +4,8 @@
 # go to --> https://github.com/lidarr/Lidarr/releases
 # to find the latest release, Lidar.develop.x.x.x.xxx.linux.tar.gz
 VERSION="0.5.0.583"
-# set the install location for lidarr 
+# set the install location for lidarr
+# NOTE: change this in the lidarr Deamon script as well --> /etc/rc.d/lidarr
 INSTALL_LOCATION="/usr/local/share"
 # set the data location
 DATA_LOCATION="/app-data/lidarr"
