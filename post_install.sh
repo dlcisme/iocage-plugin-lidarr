@@ -37,5 +37,8 @@ chmod u+x /etc/rc.d/lidarr
 # enable lidarr to start at boot
 sysrc "lidarr_enable=YES"
 
+# set the location for the data directory
+sysrc "lidarr_data_dir=$DATA_LOCATION"
+
 # start the lidarr service
 service lidarr start
