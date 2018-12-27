@@ -32,7 +32,7 @@ chown -R lidarr:lidarr /usr/local/share $DATA_LOCATION
 chmod 755 $DATA_LOCATION
 
 # give execute permssion to the Daemon script
-chmod u+x /etc/rc.d/lidarr
+chmod u+x /usr/local/etc/rc.d/lidarr
 
 # enable lidarr to start at boot
 sysrc "lidarr_enable=YES"
