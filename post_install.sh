@@ -23,7 +23,7 @@ rm /usr/local/share/Lidarr.*.tar.gz
 pw user add lidarr -c lidarr -u 353 -d /nonexistent -s /usr/bin/nologin
 
 # create the data location
-mkdir $DATA_LOCATION
+mkdir -p $DATA_LOCATION
 
 # make "lidarr" the owner of the install and data locations
 chown -R lidarr:lidarr /usr/local/share $DATA_LOCATION
