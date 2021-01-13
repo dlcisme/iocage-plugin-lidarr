@@ -12,5 +12,5 @@ fetch https://raw.githubusercontent.com/dlcisme/iocage-my-plugins/master/lidarr.
 ```
 Install the plugin.  Adjust host interface and IP address as needed.  
 ```
-iocage fetch -P -n mineos.json ip4_addr="em0|192.168.0.100"
+iocage fetch -P -n lidarr.json ip4_addr="em0|192.168.0.100"
 ```
