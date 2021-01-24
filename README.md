@@ -14,3 +14,14 @@ Install the plugin.  Adjust host interface and IP address as needed.
 ```
 iocage fetch -P -n lidarr.json ip4_addr="em0|192.168.0.100"
 ```
+
+
+NOTE: I had issues running Lidarr once the mount points were created. To resolve:
+* stop the lidarr service
+* make a copy of the app-data/lidarr/Backups folder (you need this to restore a backup)
+* clean out (delete) all the files in the app-data/lidarr folder
+* restart the lidarr service (it will create all the files it needs)
+* stop the lidarr service
+* copy the files (backups) from the backup folder you saved previously into the /app-data/lidarr/Backups folder
+* start the lidarr service
+* restore a backup (lidarr should be back to normal now)
